@@ -1,0 +1,102 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: #f97316;
+}
+.Clock{
+    background: linear-gradient(120deg,#f97316,#ea580c);
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    box-shadow: -20px -20px 60px rgba(237, 136, 4, 0.5)
+    20px 20px 20px -5px rgba(223, 172, 5, 0.893);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper{
+    width: 390px;
+    height: 390px;
+    background: linear-gradient(to top, #f97316,#ea580c);
+    border-radius: 50%;
+    box-shadow: inset 10px 10px 10px rgba(237, 136, 4, 0.5),
+    inset 20px 20px  40px rgba(223, 172, 5, 0.893);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.Clock::after{
+    filter: blur(40px);
+}
+.wrapper label{
+    position: absolute;
+    transform: rotate(calc(var(--i) * (360deg/12)));
+    inset: 16px;
+    text-align: center;
+}
+.wrapper label span{
+    transform: rotate(calc(var(--i) * (-360deg/12)));
+    display: inline-block;
+    font-size: 32px;
+    font-size: bold;
+    color: #450a0a;
+}
+.center{
+    width: 25px;
+    height: 25px;
+    background: #0a0a0a;
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px #0a0a0a60;
+}
+.center::after{
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #fd382d;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-shadow: 1px 1px 3px #fd382d60;
+    z-index: 4;
+}
+.pointer-second,
+.pointer-minute,
+.pointer-hour{
+    position: absolute;
+    bottom: 50%;
+    transform-origin: bottom;
+    /* transform: rotate(45deg); */
+}
+.pointer-second{
+    width: 4px;
+    height: 160px;
+    background: #155e75;
+    box-shadow: 1px 1px 3px #155e7560;
+    z-index: 3;
+}
+.pointer-minute{
+    width: 5px;
+    height: 130px;
+    background: #ca8a04;
+    box-shadow: 1px 1px 3px #ca8a0460;
+    z-index: 2;
+}
+.pointer-hour{
+    width: 6px;
+    height: 100px;
+    background: #e11d48;
+    box-shadow: 1px 1px 3px #e11d4860;
+    z-index: 1;
+}
