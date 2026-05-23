@@ -1,17 +1,29 @@
-setInterval(() => {
 const pointerSecond = document.querySelector(".pointer-second");
 const pointerMinute = document.querySelector(".pointer-minute");
-const pointerHour = document.querySelector(".pointer-hour"); 
+const pointerHour = document.querySelector(".pointer-hour");
 
-const date = new Date();
-const second = date.getSeconds() * 6;
-const minute = date.getMinutes() * 6;
-const hour = date.getHours() * 30 + minute / 12;
+function updateClock() {
+  const now = new Date();
 
-pointerSecond.style.transform = "rotate(" + second + "deg)";
-pointerMinute.style.transform = "rotate(" + minute + "deg)";
-pointerHour.style.transform = "rotate(" + hour + "deg)";
+  const ms = now.getMilliseconds();
+  const seconds = now.getSeconds() + ms / 1000;
+  const minutes = now.getMinutes() + seconds / 60;
+  const hours = (now.getHours() % 12) + minutes / 60;
 
+  const secondDeg = seconds * 6;
+  const minuteDeg = minutes * 6;
+  const hourDeg = hours * 30;
 
+  pointerSecond.style.transform =
+    `rotate(${secondDeg}deg)`;
 
-},1000);
+  pointerMinute.style.transform =
+    `rotate(${minuteDeg}deg)`;
+
+  pointerHour.style.transform =
+    `rotate(${hourDeg}deg)`;
+
+  requestAnimationFrame(updateClock);
+}
+
+updateClock();
